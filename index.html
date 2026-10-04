@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FutbolaHablando · Lo que sale en los videos</title>
+<meta name="description" content="Las camisetas, libros y cosas de las que hablan en los videos de FutbolaHablando.">
+<meta name="theme-color" content="#0b0b0d">
+<meta property="og:title" content="FutbolaHablando · Lo que sale en los videos">
+<meta property="og:description" content="Las camisetas, libros y cosas de las que hablan en los videos.">
+<meta property="og:image" content="img/avatar.jpg">
+<link rel="icon" href="img/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo: #0b0b0d;
+    --tarjeta: #151518;
+    --tarjeta-borde: rgba(255, 255, 255, 0.07);
+    --texto: #f5f5f4;
+    --texto-2: rgba(245, 245, 244, 0.68);
+    --texto-3: rgba(245, 245, 244, 0.42);
+    --dorado: #ffc83d;
+    --dorado-oscuro: #e9ae14;
+    --ml: #ffe600;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 520px at 50% -180px, rgba(255, 200, 61, 0.14), transparent 70%),
+      var(--fondo);
+    color: var(--texto);
+    font-family: Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-weight: 500;
+    line-height: 1.45;
+    min-height: 100vh;
+    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+  }
+  a { color: inherit; }
+  .envoltura { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+  /* Encabezado */
+  header { text-align: center; padding: 36px 0 22px; }
+  .avatar {
+    width: 88px; height: 88px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 14px;
+    border: 3px solid var(--dorado); box-shadow: 0 10px 40px rgba(255, 200, 61, 0.25);
+  }
+  h1 {
+    font-family: Anton, Impact, sans-serif; font-weight: 400; letter-spacing: 1px;
+    font-size: clamp(30px, 8vw, 44px); line-height: 1; margin: 0;
+  }
+  .bajada { margin: 8px 0 0; color: var(--texto-2); font-weight: 600; font-size: 15px; }
+  .redes { display: flex; justify-content: center; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .red {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    padding: 9px 14px; border-radius: 999px; font-size: 13px; font-weight: 700;
+    background: rgba(255, 255, 255, 0.06); border: 1px solid var(--tarjeta-borde);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .red:hover { background: rgba(255, 255, 255, 0.12); }
+  .red:active { transform: scale(0.97); }
+  .red svg { width: 16px; height: 16px; }
+
+  /* Buscador */
+  .barra { position: sticky; top: 0; z-index: 5; padding: 10px 0 14px; background: linear-gradient(var(--fondo) 75%, transparent); }
+  .buscar {
+    width: 100%; padding: 13px 16px 13px 42px; border-radius: 14px; font: inherit; font-size: 15px;
+    color: var(--texto); background: var(--tarjeta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%23999' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 14px center;
+    border: 1px solid var(--tarjeta-borde); outline: none;
+  }
+  .buscar::placeholder { color: var(--texto-3); }
+  .buscar:focus-visible { border-color: var(--dorado); box-shadow: 0 0 0 3px rgba(255, 200, 61, 0.25); }
+
+  /* Tarjetas */
+  .lista { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 640px) { .lista { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+  @media (min-width: 980px) { .lista { grid-template-columns: repeat(3, 1fr); } }
+
+  .tarjeta {
+    display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 14px; align-items: start;
+    background: var(--tarjeta); border: 1px solid var(--tarjeta-borde); border-radius: 18px; padding: 12px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .tarjeta:hover { border-color: rgba(255, 200, 61, 0.35); }
+  @media (min-width: 640px) {
+    .tarjeta { grid-template-columns: 1fr; padding: 12px 12px 14px; }
+  }
+  .miniatura {
+    position: relative; border-radius: 12px; overflow: hidden; background: #000;
+    width: 100%; aspect-ratio: 9 / 14;
+  }
+  @media (min-width: 640px) { .miniatura { aspect-ratio: 4 / 5; } }
+  .cuerpo { align-self: stretch; }
+  .miniatura img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block; }
+  .producto-foto {
+    position: absolute; right: 8px; bottom: 8px; width: 46%; aspect-ratio: 1; border-radius: 10px;
+    background: #fff; object-fit: contain; padding: 4px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  .etiqueta {
+    position: absolute; left: 8px; top: 8px; font-size: 11px; font-weight: 800; letter-spacing: 0.5px;
+    background: rgba(0, 0, 0, 0.6); color: var(--dorado); padding: 4px 8px; border-radius: 6px; text-transform: uppercase;
+  }
+  .fecha { font-size: 11px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: var(--dorado); }
+  @media (min-width: 640px) { .fecha { margin-top: 12px; } .cita { margin-top: 4px !important; } }
+  .cuerpo { display: flex; flex-direction: column; min-width: 0; }
+  .cita {
+    font-family: Anton, Impact, sans-serif; font-size: 19px; line-height: 1.12; letter-spacing: 0.3px; margin: 2px 0 6px;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  @media (min-width: 640px) { .cita { margin-top: 12px; } }
+  .producto { font-size: 14px; color: var(--texto-2); font-weight: 600; margin: 0 0 12px; }
+  .boton {
+    margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+    background: var(--dorado); color: #111; font-weight: 800; font-size: 14px; min-height: 46px; padding: 10px 14px;
+    border-radius: 12px; box-shadow: 0 8px 24px rgba(255, 200, 61, 0.22);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .boton:hover { background: var(--dorado-oscuro); }
+  .boton:active { transform: scale(0.98); }
+  .boton:focus-visible, .red:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+  .boton svg { width: 16px; height: 16px; }
+  .boton.pendiente { background: rgba(255, 255, 255, 0.08); color: var(--texto-3); box-shadow: none; pointer-events: none; }
+
+  .vacio { text-align: center; color: var(--texto-2); padding: 48px 12px; grid-column: 1 / -1; }
+  footer { margin-top: 36px; text-align: center; color: var(--texto-3); font-size: 12px; line-height: 1.6; }
+  footer p { margin: 4px auto; max-width: 560px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="envoltura">
+  <header>
+    <img class="avatar" src="img/avatar.jpg" alt="Logo de FutbolaHablando" width="88" height="88">
+    <h1>FUTBOLAHABLANDO</h1>
+    <p class="bajada">Lo que sale en los videos ⚽</p>
+    <nav class="redes" aria-label="Redes">
+      <a class="red" href="https://www.tiktok.com/@futbolahablando" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3h-3v12.2a2.8 2.8 0 1 1-2.8-2.8c.3 0 .6 0 .8.1V9.4a6 6 0 1 0 5 5.9V9.1a7.7 7.7 0 0 0 4.4 1.4V7.4c-2.4 0-4.4-2-4.4-4.4z"/></svg>
+        TikTok</a>
+      <a class="red" href="https://www.youtube.com/@FutbolaHablando" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8zM9.7 15V9l5.8 3-5.8 3z"/></svg>
+        YouTube</a>
+    </nav>
+  </header>
+
+  <div class="barra">
+    <label class="sr" for="buscar" style="position:absolute;left:-9999px">Buscar jugador o producto</label>
+    <input id="buscar" class="buscar" type="search" placeholder="Busca un jugador o un producto…" autocomplete="off">
+  </div>
+
+  <main id="lista" class="lista" aria-live="polite"></main>
+
+  <footer>
+    <p>Algunos links son de afiliado de Mercado Libre: si compras, FutbolaHablando recibe una pequeña comisión, sin costo extra para ti.</p>
+    <p>Los productos no son recomendados ni patrocinados por los jugadores que aparecen en los videos.</p>
+  </footer>
+</div>
+
+<script>
+  const PREVIEW = new URLSearchParams(location.search).has('preview');
+  const flecha = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const sinTildes = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const fecha = iso => new Date(iso).toLocaleDateString('es-CL', { day: 'numeric', month: 'short' });
+
+  let items = [];
+
+  function pintar(filtro = '') {
+    const q = sinTildes(filtro.trim());
+    const ahora = Date.now();
+    const visibles = items
+      .filter(it => PREVIEW || (it.link && Date.parse(it.fecha) <= ahora))
+      .filter(it => !q || sinTildes([it.cita, it.producto, it.jugadores].join(' ')).includes(q));
+    const lista = document.getElementById('lista');
+    if (!visibles.length) {
+      lista.innerHTML = `<p class="vacio">${q ? 'No hay nada con esa búsqueda.' : 'Pronto vas a encontrar acá lo que sale en los videos.'}</p>`;
+      return;
+    }
+    lista.innerHTML = visibles.map(it => `
+      <article class="tarjeta">
+        <div class="miniatura">
+          <img src="${esc(it.miniatura)}" alt="${esc(it.cita)}" loading="lazy">
+          ${it.foto ? `<img class="producto-foto" src="${esc(it.foto)}" alt="${esc(it.producto)}" loading="lazy">` : ''}
+        </div>
+        <div class="cuerpo">
+          <span class="fecha">${esc(fecha(it.fecha))}</span>
+          <h2 class="cita">${esc(it.cita)}</h2>
+          <p class="producto">${esc(it.producto)}</p>
+          ${it.link
+            ? `<a class="boton" href="${esc(it.link)}" target="_blank" rel="sponsored noopener">Ver en Mercado Libre ${flecha}</a>`
+            : `<span class="boton pendiente">Falta el link de afiliado</span>`}
+        </div>
+      </article>`).join('');
+  }
+
+  fetch('productos.json', { cache: 'no-store' })
+    .then(r => r.json())
+    .then(d => { items = d.sort((a, b) => Date.parse(b.fecha) - Date.parse(a.fecha)); pintar(); })
+    .catch(() => { document.getElementById('lista').innerHTML = '<p class="vacio">No se pudo cargar la lista. Recarga la página.</p>'; });
+
+  document.getElementById('buscar').addEventListener('input', e => pintar(e.target.value));
+</script>
+</body>
+</html>
